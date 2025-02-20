@@ -37,22 +37,8 @@
     : Add user to admin group
   user:
     name: "{{ _user.name }}"
-    groups: ["{% 
-        if ['fedora', 'centos', 'alpine', 'alma'] | group_match(group_names)
-            %}wheel{%
-        elif ['debian', 'ubuntu'] | group_match(group_names)
-            %}sudo{%
-        endif
-      %}"]
+    groups:
+      - "{{ sudo_group[ansible_distribution] }}"
     append: True
   become: True
   when: _user.sudo
-
-
-- name: >
-    base/user
-    : create : {{ _user.name }}
-    : Configure for sshd login
-  include_role:
-    name: service/sshd/user
-  when: _user.authorized_key_names

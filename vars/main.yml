@@ -1,0 +1,8 @@
+---
+sudo_group:
+    Fedora:         wheel
+    CentOS:         wheel
+    Alpine:         wheel
+    AlmaLinux:      wheel
+    Debian:         sudo
+    Ubuntu:         sudo

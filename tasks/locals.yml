@@ -18,4 +18,3 @@
       comment: "{{ USER.comment | default('') }}"
       
       sudo: "{{ USER.sudo | default('') }}"
-      authorized_key_names: "{{ USER.authorized_key_names | default([]) }}"
